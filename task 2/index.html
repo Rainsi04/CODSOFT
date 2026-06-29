@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcPro — Simple Online Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">
+        <span class="logo-icon">⌗</span>
+        CalcPro
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="task3/index.html" class="nav-cta">Open Calculator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-badge">Free &amp; easy to use</p>
+          <h1>Calculations made simple, anytime you need them</h1>
+          <p class="hero-text">
+            A clean, realistic calculator built for everyday math. Add, subtract,
+            multiply, and divide with a familiar layout that feels just like the
+            real thing.
+          </p>
+          <div class="hero-actions">
+            <a href="task3/index.html" class="btn btn-primary">Try the Calculator</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="calculator-preview">
+            <div class="preview-brand">CalcPro</div>
+            <div class="preview-display">
+              <span class="preview-expression">128 × 4</span>
+              <span class="preview-result">512</span>
+            </div>
+            <div class="preview-keys">
+              <span></span><span></span><span></span><span class="op"></span>
+              <span></span><span></span><span></span><span class="op"></span>
+              <span></span><span></span><span></span><span class="op"></span>
+              <span></span><span></span><span></span><span class="eq"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Everything you need for quick math</h2>
+          <p>Designed to be fast, intuitive, and accessible on any device.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🧮</div>
+            <h3>Realistic Design</h3>
+            <p>Physical-style buttons, LCD display, and a layout that mirrors a classic handheld calculator.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">⌨️</div>
+            <h3>Keyboard Support</h3>
+            <p>Type numbers and operators directly from your keyboard for faster input.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Works Everywhere</h3>
+            <p>Runs in your browser with no downloads or sign-up required. Desktop and mobile friendly.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Instant Results</h3>
+            <p>Chain operations, use percentages, toggle signs, and get answers in real time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>How it works</h2>
+          <p>Get started in three simple steps.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-number">1</span>
+            <div>
+              <h3>Open the calculator</h3>
+              <p>Click the button below to launch the full calculator app.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <div>
+              <h3>Enter your numbers</h3>
+              <p>Use the on-screen buttons or your keyboard to build your expression.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <div>
+              <h3>Press equals</h3>
+              <p>Hit <kbd>=</kbd> or the blue equals button to see your result instantly.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <h2>Ready to crunch some numbers?</h2>
+        <p>Jump straight into the calculator — no account needed.</p>
+        <a href="task3/index.html" class="btn btn-primary btn-large">Launch Calculator</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">⌗ CalcPro</p>
+      <p class="footer-copy">&copy; 2026 CalcPro. Built for learning and everyday use.</p>
+      <ul class="footer-links">
+        <li><a href="task3/index.html">Calculator</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+</html>
