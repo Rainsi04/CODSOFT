@@ -1,0 +1,142 @@
+.dashboard {
+  padding: 48px 24px 80px;
+}
+
+.dashboard-header {
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 8px;
+}
+
+.dashboard-header p {
+  color: var(--text-secondary);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.panel h2 {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.muted {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+}
+
+.dash-list li.active {
+  border-color: rgba(74, 158, 255, 0.4);
+}
+
+.dash-list li div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dash-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.danger {
+  color: var(--danger) !important;
+}
+
+.applicants-panel {
+  margin-top: 8px;
+}
+
+.applicants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.applicant-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.applicant-card h3 {
+  margin-bottom: 4px;
+}
+
+.applicant-card .cover {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

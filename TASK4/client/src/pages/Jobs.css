@@ -1,0 +1,37 @@
+.jobs-page {
+  padding: 48px 24px 80px;
+}
+
+.job-count {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.filter-bar input,
+.filter-bar select {
+  flex: 1;
+  min-width: 160px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.empty-msg {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 60px 24px;
+}
