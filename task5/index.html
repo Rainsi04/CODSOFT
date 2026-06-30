@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizCraft — Online Quiz Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo" data-nav="home">
+        <span class="logo-icon">◆</span>
+        QuizCraft
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#" data-nav="list">Browse Quizzes</a></li>
+        <li><a href="#" data-nav="create">Create Quiz</a></li>
+        <li><a href="#" class="nav-cta" data-nav="auth" id="authNavLink">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HOME VIEW -->
+    <section class="view" id="view-home">
+      <section class="hero">
+        <p class="hero-badge">Build &amp; share quizzes in minutes</p>
+        <h1>Create quizzes. Challenge friends. Track your scores.</h1>
+        <p class="hero-text">
+          QuizCraft lets you build custom multiple-choice quizzes and lets
+          others take them with instant feedback on every score.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-nav="create">Create a Quiz</button>
+          <button class="btn btn-secondary" data-nav="list">Take a Quiz</button>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <h2 class="section-title">Everything you need</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✏️</div>
+            <h3>Quiz Creation</h3>
+            <p>Add questions with multiple-choice answers and mark the correct one.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Quiz Taking</h3>
+            <p>Answer one question at a time with a clean, focused interface.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Instant Results</h3>
+            <p>Get your final score and review correct answers immediately.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Quiz Library</h3>
+            <p>Browse every quiz that's been created and jump right in.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>User Accounts</h3>
+            <p>Sign up to save quizzes you've made and track your history.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile Ready</h3>
+            <p>Create and take quizzes comfortably on any screen size.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- AUTH VIEW -->
+    <section class="view hidden" id="view-auth">
+      <div class="card auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Sign In</button>
+          <button class="auth-tab" data-tab="register">Register</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>Username
+            <input type="text" id="loginUsername" required placeholder="e.g. quizmaster">
+          </label>
+          <label>Password
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <p class="form-msg" id="loginMsg"></p>
+        </form>
+
+        <form id="registerForm" class="auth-form hidden">
+          <label>Username
+            <input type="text" id="registerUsername" required placeholder="Choose a username">
+          </label>
+          <label>Password
+            <input type="password" id="registerPassword" required placeholder="Choose a password">
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+          <p class="form-msg" id="registerMsg"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CREATE QUIZ VIEW -->
+    <section class="view hidden" id="view-create">
+      <h2 class="section-title">Create a New Quiz</h2>
+      <form id="quizForm" class="card">
+        <label>Quiz Title
+          <input type="text" id="quizTitle" required placeholder="e.g. World Capitals">
+        </label>
+        <label>Description
+          <textarea id="quizDescription" rows="2" placeholder="A short description of your quiz"></textarea>
+        </label>
+
+        <div id="questionsContainer"></div>
+
+        <button type="button" class="btn btn-secondary" id="addQuestionBtn">+ Add Question</button>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Publish Quiz</button>
+        </div>
+        <p class="form-msg" id="createMsg"></p>
+      </form>
+    </section>
+
+    <!-- QUIZ LISTING VIEW -->
+    <section class="view hidden" id="view-list">
+      <h2 class="section-title">Browse Quizzes</h2>
+      <div class="quiz-grid" id="quizGrid"></div>
+      <p class="empty-state hidden" id="listEmpty">No quizzes yet — be the first to create one!</p>
+    </section>
+
+    <!-- QUIZ TAKING VIEW -->
+    <section class="view hidden" id="view-take">
+      <div class="card quiz-take-card">
+        <div class="quiz-progress">
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <p id="progressLabel"></p>
+        </div>
+        <h3 id="takeQuestionText"></h3>
+        <div class="options-list" id="takeOptionsList"></div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="nextQuestionBtn">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS VIEW -->
+    <section class="view hidden" id="view-results">
+      <div class="card results-card">
+        <h2>Quiz Complete!</h2>
+        <p class="score-display" id="scoreDisplay"></p>
+        <div id="resultsBreakdown"></div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" data-nav="list">Back to Quizzes</button>
+          <button class="btn btn-primary" id="retakeBtn">Retake Quiz</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>QuizCraft — CODSOFT Web Development Internship, Task 5</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
