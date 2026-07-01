@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopWave — E-Commerce Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo" data-nav="home">
+        <span class="logo-icon">◈</span>
+        ShopWave
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#" data-nav="home">Home</a></li>
+        <li><a href="#" data-nav="shop">Shop</a></li>
+        <li><a href="#" data-nav="auth" id="authNavLink">Sign In</a></li>
+        <li>
+          <button class="cart-btn" id="cartToggleBtn" aria-label="Cart">
+            🛒 <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" id="mainContent">
+
+    <!-- HOME VIEW -->
+    <section class="view" id="view-home">
+      <section class="hero">
+        <p class="hero-badge">New Arrivals — Summer 2025</p>
+        <h1>Shop smarter. Style better.</h1>
+        <p class="hero-text">Discover premium products across electronics, fashion, and lifestyle. Free shipping on orders over ₹999.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-nav="shop">Shop Now</button>
+          <button class="btn btn-secondary" data-nav="shop" data-filter="sale">View Sale</button>
+        </div>
+      </section>
+
+      <!-- Category highlights -->
+      <section class="categories-section">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-grid">
+          <div class="category-card" data-category="electronics">
+            <div class="cat-icon">📱</div>
+            <h3>Electronics</h3>
+            <p>Gadgets &amp; tech</p>
+          </div>
+          <div class="category-card" data-category="fashion">
+            <div class="cat-icon">👗</div>
+            <h3>Fashion</h3>
+            <p>Clothing &amp; accessories</p>
+          </div>
+          <div class="category-card" data-category="home">
+            <div class="cat-icon">🏠</div>
+            <h3>Home &amp; Living</h3>
+            <p>Furniture &amp; decor</p>
+          </div>
+          <div class="category-card" data-category="sports">
+            <div class="cat-icon">⚽</div>
+            <h3>Sports</h3>
+            <p>Equipment &amp; apparel</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured products -->
+      <section class="featured-section">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid" id="featuredGrid"></div>
+      </section>
+    </section>
+
+    <!-- SHOP VIEW -->
+    <section class="view hidden" id="view-shop">
+      <div class="shop-layout">
+        <!-- Sidebar filters -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <h3>Filter &amp; Sort</h3>
+
+          <div class="filter-group">
+            <label class="filter-label">Search</label>
+            <input type="text" id="searchInput" placeholder="Search products…" class="filter-input">
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <div class="filter-options" id="categoryFilters">
+              <label class="checkbox-label"><input type="checkbox" value="all" checked> All</label>
+              <label class="checkbox-label"><input type="checkbox" value="electronics"> Electronics</label>
+              <label class="checkbox-label"><input type="checkbox" value="fashion"> Fashion</label>
+              <label class="checkbox-label"><input type="checkbox" value="home"> Home &amp; Living</label>
+              <label class="checkbox-label"><input type="checkbox" value="sports"> Sports</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Price Range</label>
+            <div class="price-range">
+              <input type="number" id="minPrice" placeholder="Min ₹" class="filter-input" min="0">
+              <span>—</span>
+              <input type="number" id="maxPrice" placeholder="Max ₹" class="filter-input" min="0">
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Sort By</label>
+            <select id="sortSelect" class="filter-input">
+              <option value="default">Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+              <option value="name">Name A–Z</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Rating</label>
+            <div class="filter-options">
+              <label class="checkbox-label"><input type="radio" name="rating" value="0" checked> All</label>
+              <label class="checkbox-label"><input type="radio" name="rating" value="4"> ⭐ 4+ Stars</label>
+              <label class="checkbox-label"><input type="radio" name="rating" value="3"> ⭐ 3+ Stars</label>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary btn-block" id="clearFiltersBtn">Clear Filters</button>
+        </aside>
+
+        <!-- Product listing -->
+        <div class="shop-main">
+          <div class="shop-header">
+            <span id="resultCount" class="result-count"></span>
+            <button class="btn btn-secondary filter-toggle-btn" id="filterToggleBtn">⚙ Filters</button>
+          </div>
+          <div class="product-grid" id="shopGrid"></div>
+          <p class="empty-state hidden" id="shopEmpty">No products match your filters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT DETAIL VIEW -->
+    <section class="view hidden" id="view-product">
+      <button class="btn btn-secondary back-btn" id="backToShop">← Back to Shop</button>
+      <div class="product-detail-layout">
+        <div class="product-detail-img-wrap">
+          <div class="product-detail-img" id="detailImg"></div>
+          <div class="product-detail-rating" id="detailRating"></div>
+        </div>
+        <div class="product-detail-info">
+          <span class="product-badge" id="detailBadge"></span>
+          <h1 id="detailName"></h1>
+          <p class="product-detail-desc" id="detailDesc"></p>
+          <div class="product-detail-price" id="detailPrice"></div>
+          <div class="qty-row">
+            <label>Qty:</label>
+            <div class="qty-control">
+              <button class="qty-btn" id="qtyMinus">−</button>
+              <span id="qtyValue">1</span>
+              <button class="qty-btn" id="qtyPlus">+</button>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" id="detailAddCart">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTH VIEW -->
+    <section class="view hidden" id="view-auth">
+      <div class="card auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Sign In</button>
+          <button class="auth-tab" data-tab="register">Register</button>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <label>Email<input type="email" id="loginEmail" required placeholder="you@email.com"></label>
+          <label>Password<input type="password" id="loginPassword" required placeholder="••••••••"></label>
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <p class="form-msg" id="loginMsg"></p>
+        </form>
+        <form id="registerForm" class="auth-form hidden">
+          <label>Name<input type="text" id="regName" required placeholder="Your name"></label>
+          <label>Email<input type="email" id="regEmail" required placeholder="you@email.com"></label>
+          <label>Password<input type="password" id="regPassword" required placeholder="Min 6 characters"></label>
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+          <p class="form-msg" id="registerMsg"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CHECKOUT VIEW -->
+    <section class="view hidden" id="view-checkout">
+      <h2 class="section-title">Checkout</h2>
+      <div class="checkout-layout">
+        <form id="checkoutForm" class="card checkout-form">
+          <h3>Delivery Details</h3>
+          <div class="form-row">
+            <label>First Name<input type="text" id="chkFirstName" required placeholder="Rahul"></label>
+            <label>Last Name<input type="text" id="chkLastName" required placeholder="Sharma"></label>
+          </div>
+          <label>Email<input type="email" id="chkEmail" required placeholder="you@email.com"></label>
+          <label>Phone<input type="tel" id="chkPhone" required placeholder="+91 98765 43210"></label>
+          <label>Address<input type="text" id="chkAddress" required placeholder="House / Street"></label>
+          <div class="form-row">
+            <label>City<input type="text" id="chkCity" required placeholder="Dehradun"></label>
+            <label>PIN Code<input type="text" id="chkPin" required placeholder="248001"></label>
+          </div>
+          <label>State<input type="text" id="chkState" required placeholder="Uttarakhand"></label>
+
+          <h3 class="mt-24">Payment</h3>
+          <div class="payment-options">
+            <label class="radio-card">
+              <input type="radio" name="payment" value="card" checked>
+              <span>💳 Credit / Debit Card</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="payment" value="upi">
+              <span>📲 UPI</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="payment" value="cod">
+              <span>💵 Cash on Delivery</span>
+            </label>
+          </div>
+
+          <div id="cardFields">
+            <label>Card Number<input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"></label>
+            <div class="form-row">
+              <label>Expiry<input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7"></label>
+              <label>CVV<input type="password" id="cardCvv" placeholder="•••" maxlength="3"></label>
+            </div>
+          </div>
+
+          <div id="upiFields" class="hidden">
+            <label>UPI ID<input type="text" id="upiId" placeholder="yourname@upi"></label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-24">Place Order</button>
+          <p class="form-msg" id="checkoutMsg"></p>
+        </form>
+
+        <!-- Order summary -->
+        <div class="order-summary card">
+          <h3>Order Summary</h3>
+          <div id="checkoutItemsList"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal"></span></div>
+          <div class="summary-row"><span>Shipping</span><span id="summaryShipping"></span></div>
+          <div class="summary-row summary-total"><span>Total</span><span id="summaryTotal"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER SUCCESS VIEW -->
+    <section class="view hidden" id="view-success">
+      <div class="card success-card">
+        <div class="success-icon">✅</div>
+        <h2>Order Placed!</h2>
+        <p id="successOrderId"></p>
+        <p>Thank you for shopping with ShopWave. Your order is being processed and will arrive soon.</p>
+        <div class="form-actions">
+          <button class="btn btn-secondary" data-nav="home">Back to Home</button>
+          <button class="btn btn-primary" data-nav="shop">Continue Shopping</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay hidden" id="cartOverlay"></div>
+  <aside class="cart-drawer hidden" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart-btn" id="closeCartBtn">✕</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsList"></div>
+    <div class="cart-drawer-footer" id="cartFooter">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cartTotal"></span>
+      </div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+    <p class="cart-empty-msg hidden" id="cartEmpty">Your cart is empty.</p>
+  </aside>
+
+  <footer class="footer">
+    <p>ShopWave — CODSOFT Web Development Internship, Level 3 Task 1</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
